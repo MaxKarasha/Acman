@@ -1,0 +1,94 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": "baf5e8416c7c4e9a239e2c95a379f489587e75be"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "AcMan.HttpApiClient/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.1",
+          "NSwag.Core": "11.17.12",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "AcMan.HttpApiClient.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.1": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NJsonSchema/9.10.50": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.1",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard1.0/NJsonSchema.dll": {}
+        }
+      },
+      "NSwag.Core/11.17.12": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.1",
+          "NJsonSchema": "9.10.50",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard1.0/NSwag.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AcMan.HttpApiClient/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
+      "path": "netstandard.library/2.0.1",
+      "hashPath": "netstandard.library.2.0.1.nupkg.sha512"
+    },
+    "Newtonsoft.Json/11.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "path": "newtonsoft.json/11.0.2",
+      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+    },
+    "NJsonSchema/9.10.50": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uuRQ9Uhca7EN0zTD9pcwOwVU353q4/hzyDzxafklVcelPEA09E7pzPlzVoiXNS7JZAwu0etMQ+kxzLgXgk8y5A==",
+      "path": "njsonschema/9.10.50",
+      "hashPath": "njsonschema.9.10.50.nupkg.sha512"
+    },
+    "NSwag.Core/11.17.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KJkwh0zpNj3gRqeu4sEznPXmhpAGZLAElKo/hcwzPL7yfUTs7HRwBTVQ8m39NyVfNmgmODKKO+Pq88NDGDgV8g==",
+      "path": "nswag.core/11.17.12",
+      "hashPath": "nswag.core.11.17.12.nupkg.sha512"
+    }
+  }
+}

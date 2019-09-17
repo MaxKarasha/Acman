@@ -1,0 +1,9 @@
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\bin\Debug\netstandard2.0\AcMan.HttpApiClient.deps.json
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\bin\Debug\netstandard2.0\AcMan.HttpApiClient.dll
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\bin\Debug\netstandard2.0\AcMan.HttpApiClient.pdb
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\obj\Debug\netstandard2.0\AcMan.HttpApiClient.csprojResolveAssemblyReference.cache
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\obj\Debug\netstandard2.0\AcMan.HttpApiClient.csproj.CoreCompileInputs.cache
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\obj\Debug\netstandard2.0\AcMan.HttpApiClient.AssemblyInfoInputs.cache
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\obj\Debug\netstandard2.0\AcMan.HttpApiClient.AssemblyInfo.cs
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\obj\Debug\netstandard2.0\AcMan.HttpApiClient.dll
+d:\Projects\AcMan\AcMan\AcMan.HttpApiClient\obj\Debug\netstandard2.0\AcMan.HttpApiClient.pdb
