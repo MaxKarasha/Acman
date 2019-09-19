@@ -18,20 +18,39 @@ namespace AcMan.Server.Controllers
 		public ActivityController(ActivityRepository repository, AcManContext context) : base(repository, context) { }
 
 		[HttpPost]
-        public void Continue(Activity activity)
+        public Activity Continue([FromBody]Activity activity)
 		{
-			activity.Status = ActivityStatus.InProgress;
-			Repository.Edit(activity);
-		}
+            ICollection<Activity> activities = Repository.GetByStatus(ActivityStatus.InProgress);
+            activity.Status = ActivityStatus.InProgress;
+            activities.ToList().ForEach(a => a.Status = ActivityStatus.InPause);
+            activities.Add(activity);
+            Repository.Edit(activities);
+            return activity;
+        }
 
-		[HttpPut]
-        public void Stop(Activity activity)
+        [HttpPost]
+        public Activity ContinueById(Guid id)
+        {
+            var activity = Repository.Get(id);
+            return Continue(activity);
+        }
+
+        [HttpPost]
+        public Activity Stop([FromBody]Activity activity)
 		{
 			activity.Status = ActivityStatus.Done;
 			Repository.Edit(activity);
-		}
+            return activity;
+        }
 
-		[HttpPost]
+        [HttpPost]
+        public Activity StopById(Guid id)
+        {
+            var activity = Repository.Get(id);
+            return Stop(activity);
+        }
+
+        [HttpPost]
 		public override Guid Add([FromBody]Activity entity)
 		{
 			if (entity.User == null && entity.UserId == Guid.Empty)

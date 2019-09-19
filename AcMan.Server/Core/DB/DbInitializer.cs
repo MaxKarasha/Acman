@@ -1,5 +1,6 @@
 ﻿using AcMan.Server.Models;
 using AcMan.Server.Models.Base;
+using System;
 using System.Linq;
 
 namespace AcMan.Server.Core.DB
@@ -36,15 +37,18 @@ namespace AcMan.Server.Core.DB
                 context.Activities.Add(
                     new Activity
                     {
+                        Id = Guid.NewGuid(),
                         Caption = "Рефакторинг кода по Лояльности",
                         UserId = AcmanConstants.User.AcmanSUId,
-                        Status = ActivityStatus.InPause,
+                        Status = ActivityStatus.InProgress,
+                        Start = DateTime.Now,
                         EntityState = AcmanEntityState.Added
                     }
                 );
                 context.Activities.Add(
                     new Activity
                     {
+                        Id = Guid.NewGuid(),
                         Caption = "Интеграция с SAP SM",
                         UserId = AcmanConstants.User.AcmanSUId,
                         Status = ActivityStatus.InPause,
@@ -54,15 +58,18 @@ namespace AcMan.Server.Core.DB
                 context.Activities.Add(
                     new Activity
                     {
+                        Id = Guid.NewGuid(),
                         Caption = "Code review",
                         UserId = AcmanConstants.User.AcmanSUId,
                         Status = ActivityStatus.InPause,
+                        Start = DateTime.Now,
                         EntityState = AcmanEntityState.Added
                     }
                 );
                 context.Activities.Add(
                     new Activity
                     {
+                        Id = Guid.NewGuid(),
                         Caption = "Архитектура автопланирования, UML",
                         UserId = AcmanConstants.User.AcmanSUId,
                         Status = ActivityStatus.InPause,

@@ -62,7 +62,8 @@ namespace AcMan.Server.Repositories
             var local = _context.Set<T>()
                 .Local
                 .FirstOrDefault(entry => entry.Id.Equals(entity.Id));
-            if (local != null) {
+            if (local != null)
+            {
                 _context.Entry(local).State = EntityState.Detached;
             }
             entity.EntityState = AcmanEntityState.Modified;
@@ -71,6 +72,14 @@ namespace AcMan.Server.Repositories
             result.Wait();
             _context.Entry(entity).State = EntityState.Detached;
             entity.EntityState = AcmanEntityState.Unchanged;
+        }
+
+        public virtual void Edit(ICollection<T> entities)
+        {
+            foreach(var entity in entities)
+            {
+                Edit(entity);
+            }
         }
 
         public ICollection<T> GetAll()

@@ -36,7 +36,7 @@ namespace AcMan.Server.Controllers
 		}
 
 		[HttpGet]
-		public IEnumerable<T2> Get()
+		public virtual IEnumerable<T2> Get()
 		{
 			return _repository.GetAll();
 		}

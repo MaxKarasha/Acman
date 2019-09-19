@@ -21,26 +21,26 @@ namespace AcMan.Server.Controllers
             CurrentActivity = Repository.GetCurrent();
         }
 
-        [HttpPut]
-        public void Pause()
+        [HttpPost]
+        public Activity Pause()
         {
             CurrentActivity.Status = ActivityStatus.InPause;
             Repository.Edit(CurrentActivity);
+            return CurrentActivity;
         }
 
-        [HttpPut]
-        public void Stop()
+        [HttpPost]
+        public Activity Stop()
         {
             CurrentActivity.Status = ActivityStatus.Done;
             Repository.Edit(CurrentActivity);
+            return CurrentActivity;
         }
-                
-        //[HttpGet]
-        //public Activity Get()
-        //{
-        //    //Key;
-        //    return null;
-        //}
 
+        [HttpGet]
+        public Activity GetCurrent()
+        {
+            return CurrentActivity;
+        }
     }
 }

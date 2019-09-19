@@ -154,8 +154,6 @@ namespace AcMan.Server.Repositories
             }
         }
 
-        
-
         public Activity GetWithRelation(Guid id)
         {
             Activity entity = _context.Set<Activity>()
