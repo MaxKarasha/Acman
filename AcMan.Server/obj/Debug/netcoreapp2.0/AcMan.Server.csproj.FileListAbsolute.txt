@@ -20,3 +20,14 @@ d:\Projects\AcMan\AcMan\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.Assemb
 d:\Projects\AcMan\AcMan\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.dll
 d:\Projects\AcMan\AcMan\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.pdb
 d:\Projects\AcMan\AcMan\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.csprojAssemblyReference.cache
+d:\Git\Acman-master\AcMan.Server\bin\Debug\netcoreapp2.0\AcMan.Server.deps.json
+d:\Git\Acman-master\AcMan.Server\bin\Debug\netcoreapp2.0\AcMan.Server.runtimeconfig.json
+d:\Git\Acman-master\AcMan.Server\bin\Debug\netcoreapp2.0\AcMan.Server.runtimeconfig.dev.json
+d:\Git\Acman-master\AcMan.Server\bin\Debug\netcoreapp2.0\AcMan.Server.dll
+d:\Git\Acman-master\AcMan.Server\bin\Debug\netcoreapp2.0\AcMan.Server.pdb
+d:\Git\Acman-master\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.csprojResolveAssemblyReference.cache
+d:\Git\Acman-master\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.csproj.CoreCompileInputs.cache
+d:\Git\Acman-master\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.AssemblyInfoInputs.cache
+d:\Git\Acman-master\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.AssemblyInfo.cs
+d:\Git\Acman-master\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.dll
+d:\Git\Acman-master\AcMan.Server\obj\Debug\netcoreapp2.0\AcMan.Server.pdb

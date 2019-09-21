@@ -13,5 +13,7 @@ namespace AcMan.Server.Integration.SyncStrategy
         void Sync();
         void SyncUser(User user);
         string Info { get; }
+        void SyncAcmanActivity(Activity activity);
+        void SyncAcmanActivity(IEnumerable<Activity> activity);
     }
 }

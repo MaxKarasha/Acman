@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AcMan.Server.Core;
 using AcMan.Server.Core.DB;
 using AcMan.Server.Core.KeyReader;
+using AcMan.Server.Integration.SyncStrategy;
 using AcMan.Server.Models;
 using AcMan.Server.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -17,7 +18,7 @@ namespace AcMan.Server.Controllers
     {
         public Activity CurrentActivity { get; set; }
 
-        public CurrentActivityController(ActivityRepository repository, AcManContext context) : base(repository, context) {
+        public CurrentActivityController(ActivityRepository repository, AcManContext context, ISyncStrategy syncStrategy) : base(repository, context, syncStrategy) {
             CurrentActivity = Repository.GetCurrent();
         }
 
@@ -27,6 +28,7 @@ namespace AcMan.Server.Controllers
             CurrentActivity.Status = ActivityStatus.InPause;
             CurrentActivity.End = AcmanHelper.GetCurrentDateTime();
             Repository.Edit(CurrentActivity);
+            SyncStrategy.SyncAcmanActivity(CurrentActivity);
             return CurrentActivity;
         }
 
@@ -36,6 +38,7 @@ namespace AcMan.Server.Controllers
             CurrentActivity.Status = ActivityStatus.Done;
             CurrentActivity.End = AcmanHelper.GetCurrentDateTime();
             Repository.Edit(CurrentActivity);
+            SyncStrategy.SyncAcmanActivity(CurrentActivity);
             return CurrentActivity;
         }
 

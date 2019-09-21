@@ -105,14 +105,24 @@ namespace AcMan.Server.Integration.SyncStrategy
                 }
             }
             _info += "AcmanActivityes: " + acmanChangedActivityes.Count.ToString() + "; ";
-            foreach (var acmanActivity in acmanChangedActivityes) {
-                if (acmanActivity.EndSystemRecordId == null) {
-                    Guid endSystemRecordId = _activityBpmOdataRepository.Add(acmanActivity);
-                    acmanActivity.EndSystemRecordId = endSystemRecordId;
-                } else {
-                    _activityBpmOdataRepository.Edit(acmanActivity);
-                }
-                _activityRepository.Edit(acmanActivity);
+            SyncAcmanActivity(acmanChangedActivityes);
+        }
+
+        public void SyncAcmanActivity(Activity activity)
+        {
+            if (activity.EndSystemRecordId == null) {
+                Guid endSystemRecordId = _activityBpmOdataRepository.Add(activity);
+                activity.EndSystemRecordId = endSystemRecordId;
+            } else {
+                _activityBpmOdataRepository.Edit(activity);
+            }
+            _activityRepository.Edit(activity);
+        }
+        public void SyncAcmanActivity(IEnumerable<Activity> activities)
+        {
+            foreach (var acmanActivity in activities)
+            {
+                SyncAcmanActivity(acmanActivity);
             }
         }
     }

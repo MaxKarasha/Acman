@@ -1,6 +1,7 @@
 ﻿using AcMan.Server.Core;
 using AcMan.Server.Core.DB;
 using AcMan.Server.Core.KeyReader;
+using AcMan.Server.Integration.SyncStrategy;
 using AcMan.Server.Models;
 using AcMan.Server.Models.Base;
 using AcMan.Server.Repositories;
@@ -17,6 +18,7 @@ namespace AcMan.Server.Controllers
 	{
 		private T1 _repository;
         private AcManContext _context;
+        public ISyncStrategy SyncStrategy;
 
         public T1 Repository {
 			get {
@@ -35,7 +37,14 @@ namespace AcMan.Server.Controllers
             _context = context;
 		}
 
-		[HttpGet]
+        public BaseController(T1 repository, AcManContext context, ISyncStrategy syncStrategy)
+        {
+            _repository = repository;
+            _context = context;
+            SyncStrategy = syncStrategy;
+        }
+
+        [HttpGet]
 		public virtual IEnumerable<T2> Get()
 		{
 			return _repository.GetAll();

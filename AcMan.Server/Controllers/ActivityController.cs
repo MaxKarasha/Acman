@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AcMan.Server.Core;
 using AcMan.Server.Core.DB;
 using AcMan.Server.Core.KeyReader;
+using AcMan.Server.Integration.SyncStrategy;
 using AcMan.Server.Models;
 using AcMan.Server.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace AcMan.Server.Controllers
 {
 	public class ActivityController : BaseController<ActivityRepository, Activity>
 	{
-		public ActivityController(ActivityRepository repository, AcManContext context) : base(repository, context) { }
+		public ActivityController(ActivityRepository repository, AcManContext context, ISyncStrategy syncStrategy) : base(repository, context, syncStrategy) { }
 
 		[HttpPost]
         public Activity Continue([FromBody]Activity activity)
@@ -29,12 +30,13 @@ namespace AcMan.Server.Controllers
             ICollection<Activity> activities = Repository.GetByStatus(ActivityStatus.InProgress);
             Activity activity = Repository.Get(id);
             activity.Status = ActivityStatus.InProgress;
-            if (activity.Start == null || activity.Start < AcmanHelper.GetCurrentDateTime()) {
+            if (activity.Start == null || activity.Start > AcmanHelper.GetCurrentDateTime()) {
                 activity.Start = AcmanHelper.GetCurrentDateTime();
             }                
             activities.ToList().ForEach(a => a.Status = ActivityStatus.InPause);
             activities.Add(activity);
             Repository.Edit(activities);
+            SyncStrategy.SyncAcmanActivity(activities);
             return activity;
         }
 
@@ -50,7 +52,11 @@ namespace AcMan.Server.Controllers
             var activity = Repository.Get(id);
             activity.Status = ActivityStatus.Done;
             activity.End = AcmanHelper.GetCurrentDateTime();
+            if (activity.Start == null) {
+                activity.Start = activity.End;
+            }
             Repository.Edit(activity);
+            SyncStrategy.SyncAcmanActivity(activity);
             return activity;
         }
 
@@ -61,8 +67,10 @@ namespace AcMan.Server.Controllers
 			{
 				entity.UserId = CurrentConnection.CurrentUser.Id;
 			}
-			return Repository.Add(entity);
-		}
+			var id = Repository.Add(entity);
+            SyncStrategy.SyncAcmanActivity(entity);
+            return id;
+        }
 
 		[HttpPost]
         public Guid Start(Activity activity)

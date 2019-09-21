@@ -1,5 +1,6 @@
 ﻿using AcMan.Server.Core;
 using AcMan.Server.Core.DB;
+using AcMan.Server.Integration.SyncStrategy;
 using AcMan.Server.Models;
 using AcMan.Server.Models.Base;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ namespace AcMan.Server.Repositories
     public class ActivityRepository : BaseSyncedRepository<Activity>, IActivityRepository
     {
         public ActivityRepository(AcManContext context) : base(context) { }
-        
+
         public ICollection<Activity> FilterByTags(IEnumerable<Tag> tags)
         {
             //TODO
@@ -71,7 +72,13 @@ namespace AcMan.Server.Repositories
             result.Wait();
             _context.Entry(entity).State = EntityState.Detached;
             entity.EntityState = AcmanEntityState.Unchanged;
+            //_syncStrategy.SyncAcmanActivity(entity);
             return entity.Id;
+        }
+        public override void Edit(Activity entity)
+        {
+            base.Edit(entity);
+            //_syncStrategy.SyncAcmanActivity(entity);
         }
 
         public override ICollection<Activity> GetAllChangedFrom(DateTime changedOn)
