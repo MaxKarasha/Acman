@@ -8,8 +8,9 @@ namespace AcMan.Server.Core
     public static class AcmanConstants
     {
         public const string KeyName = "AcmanKey";
+        public const string DemoKeyName = "TestMKKey";
 
-        
+
         public static class User
         {
             public static Guid AcmanSUId = new Guid("4845097F-57A8-43C6-A189-CD9E9B243701");

@@ -20,8 +20,18 @@ namespace AcMan.Server.Controllers
 		[HttpPost]
         public Activity Continue([FromBody]Activity activity)
 		{
+            return ContinueById(activity.Id);
+        }
+
+        [HttpPost]
+        public Activity ContinueById(Guid id)
+        {
             ICollection<Activity> activities = Repository.GetByStatus(ActivityStatus.InProgress);
+            Activity activity = Repository.Get(id);
             activity.Status = ActivityStatus.InProgress;
+            if (activity.Start == null || activity.Start < AcmanHelper.GetCurrentDateTime()) {
+                activity.Start = AcmanHelper.GetCurrentDateTime();
+            }                
             activities.ToList().ForEach(a => a.Status = ActivityStatus.InPause);
             activities.Add(activity);
             Repository.Edit(activities);
@@ -29,25 +39,19 @@ namespace AcMan.Server.Controllers
         }
 
         [HttpPost]
-        public Activity ContinueById(Guid id)
-        {
-            var activity = Repository.Get(id);
-            return Continue(activity);
-        }
-
-        [HttpPost]
         public Activity Stop([FromBody]Activity activity)
 		{
-			activity.Status = ActivityStatus.Done;
-			Repository.Edit(activity);
-            return activity;
+            return StopById(activity.Id);
         }
 
         [HttpPost]
         public Activity StopById(Guid id)
         {
             var activity = Repository.Get(id);
-            return Stop(activity);
+            activity.Status = ActivityStatus.Done;
+            activity.End = AcmanHelper.GetCurrentDateTime();
+            Repository.Edit(activity);
+            return activity;
         }
 
         [HttpPost]
@@ -75,7 +79,7 @@ namespace AcMan.Server.Controllers
 		[HttpGet]
 		public IEnumerable<Activity> GetOnPause()
 		{
-			return Repository.GetByStatus(ActivityStatus.InPause);
+			return Repository.GetByStatus(new List<ActivityStatus>() { { ActivityStatus.InPause }, { ActivityStatus.New } });
 		}
 
 		[HttpGet]

@@ -47,6 +47,11 @@ namespace AcMan.Server.Repositories
             return _context.Activities.Where(s => s.Status == status).ToList();
         }
 
+        public ICollection<Activity> GetByStatus(ICollection<ActivityStatus> statuses)
+        {
+            return _context.Activities.Where(s => statuses.Contains(s.Status)).ToList();
+        }
+
         public override Guid Add(Activity entity)
         {
             entity.EntityState = AcmanEntityState.Added;
@@ -211,7 +216,11 @@ namespace AcMan.Server.Repositories
 
         public Activity GetCurrent()
         {
-            return _context.Activities.SingleOrDefault(s => s.Status == ActivityStatus.InProgress);
+            return _context.Activities.Where(
+                    s =>s.Start <= AcmanHelper.GetCurrentDateTime() && 
+                        s.Status == ActivityStatus.InProgress
+                ).OrderByDescending(s => s.ModifiedOn)
+                .FirstOrDefault();
         }
 
         public Activity GetLast()

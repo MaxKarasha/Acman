@@ -13,8 +13,9 @@ namespace AcMan.Server.Models
 {
     public enum ActivityStatus
     {
-        InProgress,
+        New,
         InPause,
+        InProgress,        
         Done
     }
 
@@ -32,6 +33,7 @@ namespace AcMan.Server.Models
         public DateTime? Start { get; set; }
         [RemoteEntityColumnName("DueDate")]
         public DateTime? End { get; set; }
+        [RemoteEntityColumnName("StatusId", "StatusMap")]
         public ActivityStatus Status { get; set; }
         [NotMapped]
         public ICollection<Tag> Tags {

@@ -25,6 +25,7 @@ namespace AcMan.Server.Controllers
         public Activity Pause()
         {
             CurrentActivity.Status = ActivityStatus.InPause;
+            CurrentActivity.End = AcmanHelper.GetCurrentDateTime();
             Repository.Edit(CurrentActivity);
             return CurrentActivity;
         }
@@ -33,6 +34,7 @@ namespace AcMan.Server.Controllers
         public Activity Stop()
         {
             CurrentActivity.Status = ActivityStatus.Done;
+            CurrentActivity.End = AcmanHelper.GetCurrentDateTime();
             Repository.Edit(CurrentActivity);
             return CurrentActivity;
         }

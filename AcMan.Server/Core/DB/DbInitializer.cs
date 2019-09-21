@@ -1,5 +1,6 @@
 ﻿using AcMan.Server.Models;
 using AcMan.Server.Models.Base;
+using AcMan.Server.Repositories;
 using System;
 using System.Linq;
 
@@ -12,14 +13,22 @@ namespace AcMan.Server.Core.DB
             //context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             if (context.Users.SingleOrDefault(s => s.Id == AcmanConstants.User.AcmanSUId) == null) {
-                context.Users.Add(
-                    new User{
-                        Id = AcmanConstants.User.AcmanSUId,
-                        Name = "Acman system user",
-                        Login = "AcmanSU",
-                        EntityState = AcmanEntityState.Added
-                    }
-                );
+                var demoUser = new User
+                {
+                    Id = AcmanConstants.User.AcmanSUId,
+                    Name = "Acman system user",
+                    Login = "AcmanSU",
+                    EndSystemRecordId = new Guid("410006e1-ca4e-4502-a9ec-e54d922d2c00"),
+                    EntityState = AcmanEntityState.Added
+                };
+                context.Users.Add(demoUser);
+                var userInSystem = new UserInSystem
+                {
+                    User = demoUser,
+                    Key = AcmanConstants.DemoKeyName
+                };
+                var userInSystemRepository = new UserInSystemRepository(context);
+                userInSystemRepository.Add(userInSystem);
             }
             if (context.EndSystems.SingleOrDefault(s => s.Id == AcmanConstants.EndSystem.BpmonlineWorkTsi) == null) {
                 context.EndSystems.Add(
@@ -51,7 +60,7 @@ namespace AcMan.Server.Core.DB
                         Id = Guid.NewGuid(),
                         Caption = "Интеграция с SAP SM",
                         UserId = AcmanConstants.User.AcmanSUId,
-                        Status = ActivityStatus.InPause,
+                        Status = ActivityStatus.New,
                         EntityState = AcmanEntityState.Added
                     }
                 );
@@ -61,7 +70,7 @@ namespace AcMan.Server.Core.DB
                         Id = Guid.NewGuid(),
                         Caption = "Code review",
                         UserId = AcmanConstants.User.AcmanSUId,
-                        Status = ActivityStatus.InPause,
+                        Status = ActivityStatus.New,
                         Start = DateTime.Now,
                         EntityState = AcmanEntityState.Added
                     }

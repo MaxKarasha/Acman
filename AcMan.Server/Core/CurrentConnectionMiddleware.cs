@@ -22,7 +22,7 @@ namespace AcMan.Server.Core
             CurrentConnection.Key = keyReader?.GetKeyFromRequest(context.Request) ?? AcmanHelper.GetKeyFromRequest(context.Request);
             //TODO: remove this
             if (System.Diagnostics.Debugger.IsAttached && string.IsNullOrEmpty(CurrentConnection.Key)) {
-                CurrentConnection.Key = "TestMKKey";
+                CurrentConnection.Key = AcmanConstants.DemoKeyName;
             }
             if (!string.IsNullOrEmpty(CurrentConnection.Key))
             {

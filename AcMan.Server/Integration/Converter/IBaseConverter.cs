@@ -17,5 +17,6 @@ namespace AcMan.Server.Integration.Converter
         ISynchronizedEntity ConvertToAcmanEntity(IRemoteEntity remoteEntity, Type t);
         IRemoteEntity ConvertToRemoteEntity(ISynchronizedEntity baseEntity, ODBase bpm);
         IRemoteEntity ConvertToRemoteEntity(ISynchronizedEntity baseEntity, string remoteEntityName, ODBase bpm);
+        Dictionary<string, object> GetDefaultEntityValues(string entityName);
     }
 }
