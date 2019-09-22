@@ -12,9 +12,10 @@ using System;
 namespace AcMan.Server.Migrations
 {
     [DbContext(typeof(AcManContext))]
-    partial class AcManContextModelSnapshot : ModelSnapshot
+    [Migration("20190922062431_createSourceColumn")]
+    partial class createSourceColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

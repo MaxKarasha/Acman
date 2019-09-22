@@ -53,5 +53,7 @@ namespace AcMan.Server.Models
             }
         }
         public virtual ICollection<TagInActivity> TagInActivities { get; set; }
+
+		public string Source { get; set; }
     }
 }

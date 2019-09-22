@@ -36,11 +36,11 @@ namespace AcMan.Server
 
         public void ConfigureServices(IServiceCollection services)
 		{
-            //services.AddDbContext<AcManContext>(opts => opts.UseNpgsql(Configuration.GetConnectionString("PostgreSql")));
-            services.AddDbContext<AcManContext>(opts => opts.UseInMemoryDatabase("AcMan"));
-            //services.AddDbContext<AcManContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("SqlServer"), providerOptions => providerOptions.CommandTimeout(60)));
+			//services.AddDbContext<AcManContext>(opts => opts.UseNpgsql(Configuration.GetConnectionString("PostgreSql")));
+			//services.AddDbContext<AcManContext>(opts => opts.UseInMemoryDatabase("AcMan"));
+			services.AddDbContext<AcManContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("SqlServer"), providerOptions => providerOptions.CommandTimeout(60)));
 
-            services.AddTransient<AccountRepository>();
+			services.AddTransient<AccountRepository>();
             services.AddTransient<ActivityAdditionalInfoRepository>();
             services.AddTransient<ActivityRepository>();
             services.AddTransient<EndSystemRepository>();
