@@ -36,6 +36,10 @@ namespace AcMan.Server
 
         public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddCors(c =>
+			{
+				c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+			});
 			//services.AddDbContext<AcManContext>(opts => opts.UseNpgsql(Configuration.GetConnectionString("PostgreSql")));
 			//services.AddDbContext<AcManContext>(opts => opts.UseInMemoryDatabase("AcMan"));
 			services.AddDbContext<AcManContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("SqlServer"), providerOptions => providerOptions.CommandTimeout(60)));
@@ -73,7 +77,7 @@ namespace AcMan.Server
 		{
             app.UseCurrentConnection();
             app.UseSwagger();
-			app.UseCors("*");
+			app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
