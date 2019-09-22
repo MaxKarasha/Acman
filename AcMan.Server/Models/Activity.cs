@@ -66,11 +66,11 @@ namespace AcMan.Server.Models
 					case "email":
 						return "https://www.freepnglogos.com/uploads/email-png/mail-message-email-send-image-pixabay-5.png";
 					case "phone":
-						return "https://p7.hiclipart.com/preview/661/236/915/computer-icons-smartphone-mobile-app-clip-art-file-mobile-smartphone-icon-wikimedia-commons.jpg";
+						return "https://upload.wikimedia.org/wikipedia/commons/2/2d/Mobile-Smartphone-icon.png";
 					case "coffee":
-						return "https://freeiconshop.com/wp-content/uploads/edd/coffee-takeaway-flat.png";
+						return "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/coffee_zorro_avatar_cup-256.png";
 					case "lunch":
-						return "http://www.familiekerk.com/wp-content/uploads/2014/09/AWT-Meal.png";
+						return "https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Food-Dome-256.png";
 					case "help":
 						return "http://www.sclance.com/pngs/help-icon-png/help_icon_png_656596.png";
 					default:
@@ -86,13 +86,13 @@ namespace AcMan.Server.Models
 					case "jira":
 						return "https://i.pinimg.com/564x/cf/56/ae/cf56aea62b2bc4aceca0086e7d26acea.jpg";
 					case "email":
-						return "";
+						return "https://i.pinimg.com/564x/a9/a9/ea/a9a9ea8016a7904e6a2f7533aa3d2af1.jpg";
 					case "phone":
-						return "";
+						return "https://i.pinimg.com/564x/07/b7/47/07b74764d9a4fd66cd361bb3f8132478.jpg";
 					case "coffee":
-						return "https://i.pinimg.com/564x/27/0c/79/270c79fde612df07656595f56fbade9f.jpg";
+						return "https://i.pinimg.com/564x/c0/f1/66/c0f1668c7f38c3dbdfbe3566ab5ce326.jpg";
 					case "lunch":
-						return "https://i.pinimg.com/564x/29/4e/ba/294eba95c7f1174e8f6e8707fca5ff5f.jpg";
+						return "https://i.pinimg.com/564x/c1/49/f0/c149f00846e82cfdb99f856debd1899b.jpg";
 					case "help":
 						return "https://i.pinimg.com/564x/0b/69/55/0b695505cf4528565a01dcd2d287b8bd.jpg";
 					default:

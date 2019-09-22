@@ -35,6 +35,9 @@ namespace AcMan.Server.Controllers
         [HttpPost]
         public Activity Stop()
         {
+			if (CurrentActivity == null) {
+				return null;
+			}
             CurrentActivity.Status = ActivityStatus.Done;
             CurrentActivity.End = AcmanHelper.GetCurrentDateTime();
             Repository.Edit(CurrentActivity);

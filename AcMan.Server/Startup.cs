@@ -73,6 +73,7 @@ namespace AcMan.Server
 		{
             app.UseCurrentConnection();
             app.UseSwagger();
+			app.UseCors("*");
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
